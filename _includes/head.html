@@ -1,0 +1,52 @@
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    {% if page.title == "Home" %}
+      {{ site.title }} &middot; {{ site.tagline }}
+    {% else %}
+      {{ page.title }} &middot; {{ site.title }}
+    {% endif %}
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ '/' | relative_url }}public/css/poole.css">
+  <link rel="stylesheet" href="{{ '/' | relative_url }}public/css/syntax.css">
+  <link rel="stylesheet" href="{{ '/' | relative_url }}public/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Cormorant+Garamond">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ '/' | relative_url }}public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="{{ '/' | relative_url }}public/favicon.ico">
+
+  <!-- MathJax -->
+  {% if page.usemathjax %}
+  <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+          TeX: { equationNumbers: { autoNumber: "AMS" } }
+          });
+        </script>
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  {% endif %}
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E78MPHF3C8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-E78MPHF3C8');
+  </script>
+
+  <!--Site tags-->
+  {% if site.tags != "" %}
+      {% include tags.html %}
+  {% endif %}
+</head>
