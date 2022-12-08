@@ -10,3 +10,8 @@ title: About
 </p>
 
 I'm a passionate and curious engineer interested mostly on data, systems architecture, ML and good coding practices.
+
+
+--- 
+
+*If you want to contact me, you can do so writing to `martin [at] cepedus [dot] xyz`*
