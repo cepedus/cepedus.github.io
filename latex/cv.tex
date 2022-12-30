@@ -1,0 +1,111 @@
+%% start of file `template.tex'.
+\documentclass[11pt,a4paper,roman]{moderncv} % font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+%% Ensure unicode glyphs
+\input{glyphtounicode}
+\pdfgentounicode=1
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+% https://tex.stackexchange.com/questions/59702/suggest-a-nice-font-family-for-my-basic-latex-template-text-and-math
+
+
+% Change external link color
+\definecolor{popstar}{HTML}{B84A62}
+\AtBeginDocument{\hypersetup{
+    colorlinks=true, 
+    % linkbordercolor=true, 
+    linkcolor=popstar,
+     urlcolor=popstar
+    }}
+% Modify links to be directed via https by default
+\makeatletter
+\renewcommand*{\httplink}[2][]{%
+  \ifthenelse{\equal{#1}{}}%
+    {\href{https://#2}{#2}}%
+    {\href{https://#2}{#1}}}
+\makeatother
+
+\moderncvstyle{classic} % style options are 'casual' (default), 'classic', 'banking', 'oldstyle' and 'fancy'
+\moderncvcolor{blue} % color options 'black', 'blue' (default), 'burgundy', 'green', 'grey', 'orange', 'purple' and 'red'
+
+\nopagenumbers{}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{dirtytalk}
+\usepackage{comment}
+\usepackage{libertinus}
+\usepackage[T1]{fontenc}
+\usepackage[scale=0.95]{geometry}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\name{Martin}{Cepeda}
+\phone[mobile]{+33~6~13~74~34~85}
+\email{martin.cepeda.2017@polytechnique.org}
+\social[github]{cepedus}
+\social[linkedin]{cepedus}
+\quote{\vspace{-2em}\\\textbf{Interests:} {\color{black} \texttt{[Data, ML]$\times$[Engineering, Science]}}}
+
+
+\begin{document}
+\makecvtitle
+\vspace{-3em}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Work experience}
+
+\cventry{10--2021 to today}{Data Scientist}{\href{https://www.zefir.fr/}{Zefir}}{Paris (France) \& Remote}{}
+    {Zefir makes home-selling simpler, faster, and more certain. 1\textsuperscript{st} hired Data Scientist with a strong focus on deploying models into production and API development.
+    \begin{itemize}
+        \item Designed, developed and maintained the price adjustments' logic integration (4 adjustments, reduced user's time from 5 minutes to instantaneous).
+        \item Designed and bootstrapped the monitoring framework for internalized AB tests.
+        \item Co-designed and implemented the offline testing and model deployment architecture (3 models in production).
+        \item Team's advocate for good coding practices, maintainability and scalability of the \textit{data} backend.
+        \item Performed several studies on internal data sources \& company KPIs: QA on new data sources, data enrichment and correction, home features preprocessing, in-house price adjustments, feasibility of home outlier detection.
+    \end{itemize}
+    \textit{Technologies:} Python, FastAPI, Airflow, MongoDB, Docker, Terraform, Git, Bash.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Internships}
+\cventry{04--2021 to 09--2021}{Deep Learning Engineer Intern}{Dassault Systèmes}{Paris (France) \& Remote}{}
+    {Within \href{https://www.netvibes.com/en}{NetVibes} team. I developed and tested algorithms for hierarchical classification and AutoML on diverse datasets of 3D parts (20k to 120k different parts). \textit{Technologies:} Python, Keras, Tensorflow 2, Git.}
+    
+\cventry{04--2020 to 09--2020}{Research Intern}{Inria}{Orsay (France) \& Remote}{}
+    {At team \href{https://www.inria.fr/en/tau}{TAU} (Inria Saclay), supervised by \href{https://guyon.chalearn.org/}{Isabelle Guyon}. I developed a simulation environment to evaluate and design response policies in an infectious disease epidemic scenario, to be used in an Markov Decision Process framework to discover new risk mitigation strategies. \textit{Technologies:} Python, Git.
+    }
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Projects}
+
+\cventry{10--2020 to 03--2021}{Master's project}{IDEMIA}{Courbevoie (France) \& Remote}{}
+    {I explore whether if it's possible to improve the bio-metric performance of a network trained on a small set of high-resolution image data (10k images), by adding a large number of low-resolution training images (1M images) by analyzing embedding properties and distribution, implemented in PyTorch. \textit{Technologies:} Python, PyTorch, Tensorboard, Git.}
+    
+\cventry{10--2020 to 02--2021}{XPRIZE Pandemic Response Challenge}{XPRIZE}{Remote}{}
+    {I led a team of senior researchers in Machine Learning and other Master students to design, code and test a prediction model of new number of COVID-19 cases per country, as well as a model to prescript non-pharmaceutical interventions based on such predictions. Our team was among the \href{https://www.xprize.org/challenge/pandemicresponse/articles/pandemic-response-challenge-finalists}{finalists} of this challenge.}
+    
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Education}
+\cventry{2019 to 2021}{Master of Science and Technology -- Magna Cum Laude}{École Polytechnique}{Palaiseau (France)}{}
+    {\textbf{Artificial Intelligence and Advanced Visual Computing.} Industry research-oriented master with in-depth scientific courses and state-of-the-art multidisciplinary approaches. Program directors: \href{https://www.lix.polytechnique.fr/geovic/members/marie-paule_cani/}{Marie-Paule Cani} and \href{https://erwanscornet.github.io/}{Erwan Scornet}. \textit{\say{École Polytechnique Foundation's Academic Excellence Scholarship}} laureate. \textit{GPA 3.92/4.0}.}  
+    
+\cventry{2017 to 2020}{Engineer's degree (Master of Engineering)}{École Polytechnique}{Palaiseau (France)}{}
+    {\textbf{Computer Science and Applied Mathematics.} Best Engineering school in France with both an excellent scientific education and a strong multidisciplinary background. \textit{GPA 3.64/4.0}. Notable activities: several course projects in ML, applied mathematics \& computational geometry.}
+    
+\cventry{2015 to 2021}{Engineer's degree}{Pontifical Catholic University of Chile}{Santiago (Chile)}{}
+    {\textbf{Electrical Engineering (2015-2017)} then \textbf{Mathematical and Computational Engineering (2017-2021)}. One of the best institutions of higher education and research in Chile and Latin America. Ranked \textit{15\textsuperscript{th} out of 897} students in my class. Notable activities: TA during 6 semesters in several Mathematics, Sciences and Engineering courses (on average 50 students per class).}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Languages}
+\cvdoubleitem{\textbf{\textit{Human}}}{English, French \& Spanish (Full professional proficiency). Brazilian Portuguese (Conversational).}{\textbf{\textit{Machine}}}{Python (Proficient), BigQuery (Confirmed), MongoDB (Confirmed), Docker (Confirmed), Git (Confirmed), C++ (Basic), C (Notions).}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

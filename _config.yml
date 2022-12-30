@@ -25,6 +25,8 @@ author:
 github:
   repo: https://github.com/cepedus/cepedus.github.io
 
+exclude: [latex]
+
 # Custom vars
 profiles:
   github: https://github.com/cepedus
