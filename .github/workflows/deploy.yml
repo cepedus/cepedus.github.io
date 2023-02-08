@@ -4,10 +4,10 @@ on:
   # Trigger the workflow every time you push to the `main` branch
   # Using a different branch name? Replace `main` with your branch’s name
   push:
-    branches: [ master ]
+    branches: [master]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
-  
+
 # Allow this job to clone the repo and create a page deployment
 permissions:
   contents: read
@@ -22,9 +22,12 @@ jobs:
         uses: actions/checkout@v3
       - name: Install, build, and upload your site
         uses: withastro/action@v0
+        env:
+          NODE_ENV: production
         with:
           node-version: 16
-          package-manager: yarn
+          package-manager:
+            yarn
             # path: . # The root location of your Astro project inside the repository. (optional)
 
   deploy:

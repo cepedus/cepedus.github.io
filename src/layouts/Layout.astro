@@ -3,6 +3,7 @@ import { SITE } from "@config";
 import "../styles/base.css";
 
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
+const isProduction = import.meta.env.NODE_ENV === "production";
 
 export interface Props {
   title?: string;
@@ -62,14 +63,21 @@ const fallbackImageURL = new URL(SITE.ogImage, Astro.url.origin).href;
     />
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E78MPHF3C8"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-E78MPHF3C8');
-    </script>
-  
+    {
+      isProduction && (
+        <>
+          <script
+            type="text/partytown"
+            src="https://www.googletagmanager.com/gtag/js?id=G-E78MPHF3C8"
+          />
+          <script type="text/partytown">
+            window.dataLayer = window.dataLayer || []; function gtag(){" "}
+            {dataLayer.push(arguments)}
+            gtag("js", new Date()); gtag("config", "G-E78MPHF3C8");
+          </script>
+        </>
+      )
+    }
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
