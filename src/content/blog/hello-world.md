@@ -9,8 +9,9 @@ description: Very blog, such website.
 ---
 
 ## Ingredients
+
 - [Astro](https://docs.astro.build/en/getting-started/)
-- The marvelous [`astro-paper` template](https://github.com/satnaing/astro-paper) 
+- The marvelous [`astro-paper` template](https://github.com/satnaing/astro-paper)
 - This [site](https://maketext.io/) for a poor man's logo generation
 
 That's it 🚀

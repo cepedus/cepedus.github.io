@@ -26,9 +26,9 @@ jobs:
           NODE_ENV: production
         with:
           node-version: 16
-          package-manager:
-            yarn
-            # path: . # The root location of your Astro project inside the repository. (optional)
+          # package-manager:
+          #   yarn
+          # path: . # The root location of your Astro project inside the repository. (optional)
 
   deploy:
     needs: build

@@ -9,9 +9,8 @@ title: "About"
 
 - Right now, navigating the Data Scientist &rarr; ML Engineer ocean
 
+---
 
-***
+<font size="2"> &rarr; _If you're curious about my background/experiences don't hesitate to check out my [LinkedIn](https://www.linkedin.com/in/cepedus)._
 
-<font size="2"> &rarr; *If you're curious about my background/experiences don't hesitate to check out my [LinkedIn](https://www.linkedin.com/in/cepedus).*
-
-&rarr; *You can also write me an email to `martin [at] cepedus [dot] xyz`*</font>
+&rarr; _You can also write me an email to `martin [at] cepedus [dot] xyz`_</font>
