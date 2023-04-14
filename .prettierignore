@@ -11,3 +11,7 @@
 !.prettierrc
 !.eslintrc.js
 !README.md
+
+# But continue ignoring
+*.png
+*.svg

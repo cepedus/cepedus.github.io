@@ -8,6 +8,8 @@ import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 
 export default defineConfig({
   site: "https://cepedus.xyz/",
@@ -34,6 +36,17 @@ export default defineConfig({
         remarkCollapse,
         {
           test: "Table of contents",
+        },
+      ],
+      remarkMath,
+    ],
+    rehypePlugins: [
+      [
+        rehypeKatex,
+        {
+          macros: {
+            "\\di": "\\mathrm{d}",
+          },
         },
       ],
     ],
