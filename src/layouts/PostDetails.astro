@@ -12,7 +12,8 @@ export interface Props {
 
 const { post } = Astro.props;
 
-const { title, author, description, ogImage, pubDatetime, tags } = post.data;
+const { title, author, description, ogImage, pubDatetime, tags, comments } =
+  post.data;
 
 const { Content } = await post.render();
 
@@ -44,6 +45,27 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.svg`, Astro.url.origin)
     <ul class="tags-container">
       {tags.map(tag => <Tag name={tag} />)}
     </ul>
+    {
+      comments && (
+        <script
+          src="https://giscus.app/client.js"
+          data-repo="cepedus/cepedus.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkyMzExNDIzOTY="
+          data-category="Announcements"
+          data-category-id="DIC_kwDODcbz_M4CVxDQ"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="dark_dimmed"
+          data-lang="en"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async
+        />
+      )
+    }
   </main>
   <Footer />
 </Layout>
