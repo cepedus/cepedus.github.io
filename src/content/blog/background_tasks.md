@@ -21,7 +21,7 @@ comments: true
 
 ## Context
 
-You're building an API and some of your treated requests are expected to incur into a long processing time. In order not to timeout yout server, you choose to go with a pattern of the likes: your endpoint has 3 response types
+You're building an API and some of your treated requests are expected to incur into a long processing time. In order not to timeout your server, you choose to go with a pattern of the likes: your endpoint has 3 response types
 
 - Result not ready ⏳
 - Here's the result 🫡
@@ -36,7 +36,7 @@ A typical (and very simplified) "happy path" is the following:
 
 ## Options
 
-There are already off-the-shelf solutions out there such as [FastAPI Backgroud Tasks](https://fastapi.tiangolo.com/tutorial/background-tasks/), but some use-cases need to return the response _after_ creating the job (because there's extra validation to do, some intermediate processing, etc.)
+There are already off-the-shelf solutions out there such as [FastAPI Background Tasks](https://fastapi.tiangolo.com/tutorial/background-tasks/), but some use-cases need to return the response _after_ creating the job (because there's extra validation to do, some intermediate processing, etc.)
 
 Sometimes the processing job you need is ~~thicc~~ heavy to compute and you need a classical distributed computing stack (Spark, Dask, Ray and friends). Some references:
 
@@ -56,7 +56,7 @@ At the core, what we're trying to solve is the following problem:
 - We need to launch and track background tasks
 - We need to limit the amount of tasks in order not to overcharge the server
 - A failing task will not be handled by our mechanism, the tasks' states are handled elsewhere (retry/renew logic)
-- Using as few depencencies as possible
+- Using as few dependencies as possible
 
 We'll do that by defining:
 
@@ -169,7 +169,7 @@ async def _run_behind_semaphore(coroutine: Coroutine[Any, Any, Any], task_name: 
         logger.debug(f'[TASKS] Finished running task "{task_name}".')
 ```
 
-We want to recober potential errors on the tasks so we include a logging callback. We don't re-raise as the staus is handled elsewhere and we don't want to break the event loop:
+We want to recover potential errors on the tasks so we include a logging callback. We don't re-raise as the status is handled elsewhere and we don't want to break the event loop:
 
 ```python
 def _raise_aware_task_callback(task: asyncio.Task) -> None:
@@ -186,7 +186,7 @@ And finally, the scheduler coroutine. Here's the mechanism to track ongoing jobs
 
 ```python
 async def run_background_task(coroutine: Coroutine[Any, Any, Any], task_name: str) -> None:
-    """Launches a coroutine as an `asyncio.Task` in a semaphorised-queue manner:
+    """Launches a coroutine as an `asyncio.Task` in a semaphored-queue manner:
     - Only `MAX_BACKGROUND_TASKS` will be concurrently awaited.
     - Repeated call of this function will execute tasks in the same order they were added.
     """
@@ -210,9 +210,9 @@ Taking again our problem-to-solve wishlist:
 - We need to launch and track background tasks ➡️ `run_background_task`
 - We need to limit the amount of tasks in order not to overcharge the server ➡️ `_TASKS_SEMAPHORE`
 - A failing task will not be handled by our mechanism, the tasks' states are handled elsewhere (retry/renew logic) ✅
-- Using as few depencencies as possible ✅ (modulo a decent logging library)
+- Using as few dependencies as possible ✅ (modulo a decent logging library)
 
-Why bother doing this? I found it extremely fun and stimulaing, and I needed a lightweight task scheduling mechanism 😅
+Why bother doing this? I found it extremely fun and stimulating, and I needed a lightweight task scheduling mechanism 😅
 
 <details>
 <summary>Full .py module</summary>
@@ -231,7 +231,7 @@ _ACTIVE_TASKS: Set[asyncio.Task] = set()
 
 
 def get_tasks_semaphore() -> asyncio.Semaphore:
-    global _TASKS_SEMAPHORE  # pylint: disable=global-statement
+    global _TASKS_SEMAPHORE
     if _TASKS_SEMAPHORE is None:
         _TASKS_SEMAPHORE = asyncio.Semaphore(MAX_BACKGROUND_TASKS)
     return _TASKS_SEMAPHORE
@@ -263,7 +263,7 @@ def _raise_aware_task_callback(task: asyncio.Task) -> None:
 
 
 async def run_background_task(coroutine: Coroutine[Any, Any, Any], task_name: str) -> None:
-    """Launches a coroutine as an `asyncio.Task` in a semaphorised-queue manner:
+    """Launches a coroutine as an `asyncio.Task` in a semaphored-queue manner:
     - Only `MAX_BACKGROUND_TASKS` will be concurrently awaited.
     - Repeated call of this function will execute tasks in the same order they were added.
     """
