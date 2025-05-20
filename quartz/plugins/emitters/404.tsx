@@ -5,17 +5,31 @@ import { pageResources, renderPage } from "../../components/renderPage"
 import { FullPageLayout } from "../../cfg"
 import { FullSlug } from "../../util/path"
 import { sharedPageComponents } from "../../../quartz.layout"
-import { NotFound } from "../../components"
+import * as Component from "../../components"
 import { defaultProcessedContent } from "../vfile"
 import { write } from "./helpers"
 import { i18n } from "../../i18n"
 
+
 export const NotFoundPage: QuartzEmitterPlugin = () => {
   const opts: FullPageLayout = {
     ...sharedPageComponents,
-    pageBody: NotFound(),
+    pageBody: Component.NotFound(),
     beforeBody: [],
-    left: [],
+    left: [
+      Component.PageTitle(),
+      Component.MobileOnly(Component.Spacer()),
+      Component.Flex({
+        components: [
+          {
+            Component: Component.Search(),
+            grow: true,
+          },
+          { Component: Component.Darkmode() },
+          { Component: Component.ReaderMode() },
+        ],
+      }),
+    ],
     right: [],
   }
 
@@ -58,6 +72,6 @@ export const NotFoundPage: QuartzEmitterPlugin = () => {
         ext: ".html",
       })
     },
-    async *partialEmit() {},
+    async *partialEmit() { },
   }
 }
