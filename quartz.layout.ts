@@ -1,4 +1,4 @@
-import { PageLayout, SharedLayout } from "./quartz/cfg"
+import { PageLayout, SharedLayout, ListPageLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
 
 // components shared across all pages
@@ -61,8 +61,9 @@ export const defaultContentPageLayout: PageLayout = {
 }
 
 // components for pages that display lists of pages  (e.g. tags or folders)
-export const defaultListPageLayout: PageLayout = {
+export const defaultListPageLayout: ListPageLayout = {
   beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
+  afterBody: [], // Disables comment box
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
