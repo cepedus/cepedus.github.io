@@ -1,0 +1,74 @@
+# Configuration
+baseURL: "https://cepedus.xyz/"
+title: "cepedus"
+
+enableRobotsTXT: true
+enableGitInfo: true
+enableEmoji: true
+
+# Theme
+module:
+  imports:
+    - path: github.com/imfing/hextra
+
+menu:
+  main:
+    - name: Blog
+      pageRef: /blog
+      weight: 1
+    - name: About
+      pageRef: /about
+      weight: 2
+    - name: Search
+      weight: 4
+      params:
+        type: search
+    - name: LinkedIn
+      weight: 5
+      url: "https://www.linkedin.com/in/cepedus"
+      params:
+        icon: linkedin
+
+params:
+  favicon: "/favicon.svg"
+  highlight:
+    copy:
+      enable: true
+      display: hover
+  page:
+    displayPagination: false
+  blog:
+    article:
+      displayPagination: false
+  search:
+    enable: true
+    type: flexsearch
+    flexsearch:
+      index: content
+  navbar:
+    displayTitle: true
+    displayLogo: false
+  footer:
+    displayCopyright: false
+    displayPoweredBy: false
+  comments:
+    enable: false
+    type: giscus
+    giscus:
+      repo: "cepedus/cepedus.github.io"
+      repoId: "MDEwOlJlcG9zaXRvcnkyMzExNDIzOTY="
+      category: "Announcements"
+      categoryId: "DIC_kwDODcbz_M4CVxDQ"
+
+markup:
+  goldmark:
+    # latex support
+    extensions:
+      passthrough:
+        delimiters:
+          block: [['\[', '\]'], ["$$", "$$"]]
+          inline: [['\(', '\)']]
+        enable: true
+    # allow raw html
+    renderer:
+      unsafe: true
